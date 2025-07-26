@@ -141,7 +141,9 @@ export const ChatProvider = ({ children }) => {
 				setUnseenMessages(data.unseenMessages);
 			}
 		} catch (error) {
-			toast.error(error.message || "Failed to fetch users");
+			toast.error(
+				error.response?.data?.message || "Failed to fetch users"
+			);
 		}
 	};
 
@@ -153,7 +155,9 @@ export const ChatProvider = ({ children }) => {
 				setMessages(data.messages);
 			}
 		} catch (error) {
-			toast.error(error.message || "Failed to fetch messages");
+			toast.error(
+				error.response?.data?.message || "Failed to fetch messages"
+			);
 		}
 	};
 
@@ -171,7 +175,9 @@ export const ChatProvider = ({ children }) => {
 				toast.error(data.message);
 			}
 		} catch (error) {
-			toast.error(error.message || "Failed to send message");
+			toast.error(
+				error.response?.data?.message || "Failed to send message"
+			);
 		}
 	};
 

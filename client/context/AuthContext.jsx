@@ -128,13 +128,13 @@ import { io } from "socket.io-client";
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 axios.defaults.baseURL = backendUrl;
 
-export const AuthContext = createContext(); // ✅ fix
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(localStorage.getItem("token"));
 	const [authUser, setAuthUser] = useState(null);
 	const [onlineUsers, setOnlineUsers] = useState([]);
-	const [socket, setSocket] = useState(null); // ✅ fix
+	const [socket, setSocket] = useState(null);
 	const [loading, setLoading] = useState(true)
 
 	// check if user authenticated
@@ -169,11 +169,9 @@ export const AuthProvider = ({ children }) => {
 				setToken(data.token);
 				localStorage.setItem("token", data.token);
 				toast.success(data.message);
-			} else {
-				toast.error(data.message);
 			}
 		} catch (error) {
-			toast.error(error.message);
+			toast.error(error.response?.data?.message);
 		}
 	};
 
@@ -197,7 +195,7 @@ export const AuthProvider = ({ children }) => {
 				toast.success("Profile updated successfully");
 			}
 		} catch (error) {
-			toast.error(error.message);
+			toast.error(error.response?.data?.message);
 		}
 	};
 
@@ -243,5 +241,5 @@ export const AuthProvider = ({ children }) => {
 
 	return (
 		<AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-	); // ✅ fix
+	);
 };
