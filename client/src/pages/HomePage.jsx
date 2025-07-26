@@ -1,14 +1,13 @@
-import { useState } from "react"
-import Chatcontainer from "../components/Chatcontainer"
-import RightSidebar from "../components/RightSidebar"
-import Sidebar from "../components/Sidebar"
+import { useState } from "react";
+import Chatcontainer from "../components/Chatcontainer";
+import RightSidebar from "../components/RightSidebar";
+import Sidebar from "../components/Sidebar";
 
 const HomePage = () => {
+	const [selectedUser, setSelectUser] = useState(false);
 
-  const [selectedUser, setSelectUser] = useState(false)
-
-  return (
-		<div className="border w-full h-screen sm:px-[15%] sm:py-[5%">
+	return (
+		<div className="border w-full h-screen sm:px-[15%] sm:py-[5%]">
 			<div
 				className={`backdrop-blur-xl border-2 border-gray-600 rounded-2xl overflow-hidden h-[100%] grid grid-cols-1 relative ${
 					selectedUser
@@ -16,21 +15,15 @@ const HomePage = () => {
 						: "md:grid-cols-2"
 				}`}
 			>
-				<Sidebar
-					selectedUser={selectedUser}
-					setSelectedUser={setSelectUser}
-				/>
-				<Chatcontainer
-					selectedUser={selectedUser}
-					setSelectedUser={setSelectUser}
-				/>
+				<Sidebar />
+				<Chatcontainer />
 				<RightSidebar
 					selectedUser={selectedUser}
 					setSelectedUser={setSelectUser}
 				/>
 			</div>
 		</div>
-  );
-}
+	);
+};
 
-export default HomePage
+export default HomePage;

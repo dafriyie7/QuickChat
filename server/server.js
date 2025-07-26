@@ -42,8 +42,10 @@ app.use("/api/status", (req, res) => {
 	res.send("Server is live");
 });
 app.use("/api/auth", userRouter);
-app.use("/messages", messageRouter);
+app.use("/api/messages", messageRouter);
 
 await connectDB();
 
-app.listen(port, () => console.log("Server is running on PORT: " + port));
+// app.listen(port, () => console.log("Server is running on PORT: " + port));
+server.listen(port, () => console.log("Server is running on PORT: " + port));
+

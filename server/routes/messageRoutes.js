@@ -10,7 +10,7 @@ import {
 const messageRouter = express.Router();
 
 messageRouter
-	.get("/user", protectRoute, getUsersForSideBar)
+	.get("/users", protectRoute, getUsersForSideBar)
 	.get("/:id", protectRoute, getMessages)
 	.put('/mark/:id', protectRoute, markMessageAsSeen)
 	.post('/send/:id', protectRoute, sendMessage)
